@@ -45,9 +45,13 @@ $button-padding: 15px 80px 15px 80px;
   text-transform: uppercase;
   padding: $button-padding;
   border: 2px solid $btn-border-color;
+
   &:hover {
     background: white;
     color: blue;
+  }
+  :active {
+    outline: none !important;
   }
 }
 
@@ -93,7 +97,6 @@ $background-btn-lnk: white;
   }
 
   padding: 15px;
-  padding-right: 0;
   padding-top: 10px;
   padding-bottom: 10px;
   box-shadow: 2px 12px 35px -1px rgba(0, 0, 0, 0.14);
@@ -101,8 +104,18 @@ $background-btn-lnk: white;
 
 .form-group {
   font-family: Light;
+
+  .form-control {
+    border-radius: 0;
+    border: 1px solid rgba(170, 170, 170, 0.274);
+  }
 }
 
+.custom-control-input {
+  border-radius: 0;
+  border: 0;
+  background: 1px solid red;
+}
 .content-row {
   padding: 15px;
   padding-bottom: 20px;
@@ -129,17 +142,19 @@ $background-btn-lnk: white;
 }
 
 .btn-outline-single {
-  color: $theme-color;
-  border: 2px solid $theme-color;
+  color: #7695dc;
+  border: 2px solid #4a90e2;
   margin: 40px;
+  margin-top: 60px;
 }
 
 .bullet-points {
   color: $theme-color;
+  li:before {
+    content: '✓';
+  }
 }
-li:before {
-  content: '✓';
-}
+
 ul {
   padding-left: 0;
   padding-right: 80px;
@@ -183,6 +198,7 @@ ul {
   border: none;
   box-shadow: -15px -8px 119px -77px rgba(0, 0, 0, 0.66);
   border-radius: 0;
+  font-family: Regular;
 
   .btn-link {
     @include btn-link($background-btn-lnk);
@@ -190,12 +206,71 @@ ul {
 }
 
 .blue-block {
-  background: $theme-color;
+  background: #0d518c;
+  margin-top: 10px;
+  margin-bottom: 10px;
   h5 {
     padding-right: 20px;
   }
   .btn-link {
-    background: $theme-color;
+    background: #0d518c;
     @include btn-link($background-btn-lnk: false);
   }
+}
+
+.footer {
+  margin-top: 100px;
+  font-size: 14px;
+  background: #00032e;
+  padding: 20px;
+  font-family: Light;
+
+  p {
+    padding-right: 0;
+    text-align: left;
+  }
+  .footer-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.btn-footer {
+  padding: 10px 60px 10px 60px;
+  border: 1px solid rgba(255, 255, 255, 0.584);
+
+  h6 {
+    margin-bottom: 0;
+  }
+}
+.form-control-footer {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.584);
+  margin-bottom: 10px;
+}
+
+.list-unstyled {
+  li {
+    &:hover {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.584);
+    }
+  }
+}
+
+::placeholder {
+  color: white;
+}
+
+.social {
+  border-top: 1px solid rgba(255, 255, 255, 0.219);
+  padding: 10px;
+  padding-right: 0;
+  font-size: 1.5em;
+}
+
+.fb-ic,
+.li-ic {
+  color: white;
+  margin-top: 5px;
 }
