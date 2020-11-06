@@ -19,6 +19,12 @@ $theme-color: #063e81;
 
 h1 {
   font-family: Bold;
+  font-size: 50px;
+
+  @media (max-with: 576px) {
+    padding-right: 20px;
+    padding-right: 20px;
+  }
 }
 
 h3 {
@@ -33,15 +39,34 @@ p {
   padding-right: 80px;
   font-size: 14px;
   margin: 0;
+
+  @media (max-width: 768px) {
+    padding-right: 40px;
+    padding-bottom: 20px;
+  }
 }
 
 .white-text {
   color: white;
 }
 
+.big-row {
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.logo {
+  @media (max-width: 768px) {
+    margin-left: 20px;
+  }
+}
+
 $btn-border-color: white;
 $button-padding: 15px 80px 15px 80px;
 @mixin button($button-padding, $btn-border-color) {
+  /*A mixin for the buttons */
   text-transform: uppercase;
   padding: $button-padding;
   border: 2px solid $btn-border-color;
@@ -57,7 +82,9 @@ $button-padding: 15px 80px 15px 80px;
 
 $background-btn-lnk: white;
 @mixin btn-link($background-btn-lnk: true) {
+  /*A mixin for the link buttons (info cards) */
   @if $background-btn-lnk {
+    /* if bg is not white, make the font color of the button white  */
     color: $theme-color;
   } @else {
     color: white;
@@ -68,21 +95,53 @@ $background-btn-lnk: white;
 }
 
 @mixin for-img() {
+  /*Some repeting lines for the images */
   background-attachment: scroll;
   background-size: cover;
   box-sizing: content-box;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .subtitle {
   font-family: Light;
+  @media (min-width: 320px) and (max-width: 768px) {
+    margin-left: 20px;
+    margin-right: 60px;
+  }
 }
 .header {
   @include for-img();
   height: 60%;
   position: absolute;
-  background-image: url('../img/BG_white_paper_page.png');
-  background-position: 0 -140px;
+  background-image: url('../img/singapore-skyline-in-evening-PZ9YNNM.jpg');
   z-index: 0;
+
+  @media (max-width: 500px) {
+    height: 100%;
+  }
+}
+
+.overlay {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  left: 0;
+  top: 0;
+  background: rgb(9 28 70 / 82%);
+}
+
+.middle-text {
+  margin-top: 150px;
+  @media (max-width: 768px) {
+    margin-top: 200px;
+    margin-left: 20px;
+  }
+
+  @media (min-height: 736px) and (max-width: 420px) {
+    margin-top: 350px;
+    margin-left: 20px;
+  }
 }
 
 .card {
@@ -96,10 +155,12 @@ $background-btn-lnk: white;
     letter-spacing: 0.1em;
   }
 
-  padding: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 15px 10px 15px 10px;
   box-shadow: 2px 12px 35px -1px rgba(0, 0, 0, 0.14);
+
+  @media (max-width: 768px) {
+    margin-top: 40px;
+  }
 }
 
 .form-group {
@@ -111,11 +172,13 @@ $background-btn-lnk: white;
   }
 }
 
-.custom-control-input {
-  border-radius: 0;
-  border: 0;
-  background: 1px solid red;
+.g-recaptcha {
+  @media (max-width: 420px) {
+    transform: scale(0.9);
+    margin-left: -12px;
+  }
 }
+
 .content-row {
   padding: 15px;
   padding-bottom: 20px;
@@ -134,7 +197,9 @@ $background-btn-lnk: white;
   border: none;
 
   &:hover {
-    background: $btn-primary-color;
+    background: white;
+    color: #4fb6aa;
+    box-shadow: inset 0px 0px 0px 2px #4fb6aa;
   }
   h6 {
     margin-bottom: 0;
@@ -146,6 +211,10 @@ $background-btn-lnk: white;
   border: 2px solid #4a90e2;
   margin: 40px;
   margin-top: 60px;
+  &:hover {
+    background: #4a90e2;
+    color: white;
+  }
 }
 
 .bullet-points {
@@ -190,10 +259,15 @@ ul {
   @include for-img();
   height: 37vh;
   background-image: url('../img/shutterstock_742230118.jpg');
+
+  @media (max-width: 768px) {
+    padding-right: 20px;
+    margin-left: 20px;
+  }
 }
 
 .info-card {
-  padding: 30px;
+  padding: 20px;
   padding-right: 0;
   border: none;
   box-shadow: -15px -8px 119px -77px rgba(0, 0, 0, 0.66);
@@ -217,6 +291,9 @@ ul {
     @include btn-link($background-btn-lnk: false);
   }
 }
+.card-wrapper-col {
+  padding-right: 0;
+}
 
 .footer {
   margin-top: 100px;
@@ -235,9 +312,21 @@ ul {
   }
 }
 
+.footer-box {
+  width: calc(100% / 4);
+  @media (max-width: 546px) {
+    width: auto;
+  }
+}
+
 .btn-footer {
   padding: 10px 60px 10px 60px;
   border: 1px solid rgba(255, 255, 255, 0.584);
+
+  @media (max-width: 546px) {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
 
   h6 {
     margin-bottom: 0;
@@ -248,6 +337,7 @@ ul {
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.584);
   margin-bottom: 10px;
+  width: 90%;
 }
 
 .list-unstyled {
@@ -264,13 +354,29 @@ ul {
 
 .social {
   border-top: 1px solid rgba(255, 255, 255, 0.219);
+  margin-top: 30px;
   padding: 10px;
   padding-right: 0;
   font-size: 1.5em;
+  @media (max-width: 576px) {
+    justify-content: center !important;
+  }
 }
 
 .fb-ic,
 .li-ic {
   color: white;
   margin-top: 5px;
+}
+.remove-mobile {
+  @media (max-width: 546px) {
+    display: none;
+  }
+}
+
+.fa-bars {
+  font-size: 1.5rem;
+  @media (min-width: 546px) {
+    opacity: 0;
+  }
 }
